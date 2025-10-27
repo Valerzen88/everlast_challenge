@@ -16,4 +16,4 @@ Stack: **Backend** Python/FastAPI + **Frontend** Flutter (mobile/desktop). Persi
 
 ## How to build and start docker image
 docker compose up --build
-# Backend: http://localhost:8000
+## Backend: http://localhost:8000
