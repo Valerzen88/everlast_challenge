@@ -1,6 +1,7 @@
 from typing import Optional
 from sqlmodel import SQLModel, Field
 from datetime import datetime
+from pydantic import field_validator
 import uuid
 
 class Lead(SQLModel, table=True):
@@ -10,4 +11,23 @@ class Lead(SQLModel, table=True):
     name: str
     email: Optional[str] = None
     status: str = Field(default="new")
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+
+    class Config:
+        orm_mode = True
+        
+class LeadRead(SQLModel):
+    id: int
+    name: str
+    email: str
+    created_at: str  # oder datetime, siehe unten
+
+    model_config = {
+        "from_attributes": True
+    }
+    
+    @field_validator("created_at", mode="before")
+    def convert_datetime(cls, v):
+        if isinstance(v, datetime):
+            return v.isoformat()
+        return v
