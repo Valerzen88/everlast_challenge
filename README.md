@@ -21,11 +21,18 @@ docker compose up --build
 +++
 
 ##Special things to know
-For local run:
+For local backend run:
 - brew has a problem with MacOS 26
 - don't forget to create env
 	- python3 -m venv venv
 	- source venv/bin/activate
-	- pip install "fastapi" "uvicorn" "sqlmodel" "python-jose[cryptography]"
+	- pip install "fastapi" "uvicorn" "sqlmodel" "python-jose[cryptography]" or run pip install -r requirements.txt
 	- install in venv, not in local env!
+- ./start.sh
+- python -m uvicorn backend.app.main:app --reload
 
+For local frontend run:
+- flutter config --enable-web
+- flutter create .
+- flutter run -d chrome
+- flutter devices (to see which devices are possible)
