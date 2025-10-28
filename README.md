@@ -17,3 +17,15 @@ Stack: **Backend** Python/FastAPI + **Frontend** Flutter (mobile/desktop). Persi
 ## How to build and start docker image
 docker compose up --build
 ## Backend: http://localhost:8000
+
++++
+
+##Special things to know
+For local run:
+- brew has a problem with MacOS 26
+- don't forget to create env
+	- python3 -m venv venv
+	- source venv/bin/activate
+	- pip install "fastapi" "uvicorn" "sqlmodel" "python-jose[cryptography]"
+	- install in venv, not in local env!
+
