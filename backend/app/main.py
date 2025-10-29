@@ -6,6 +6,10 @@ from .crud import create_lead, list_leads, convert_lead
 from sqlmodel import Session, SQLModel, select, create_engine
 from typing import List
 from backend.app.models import Lead
+from fastapi.middleware.cors import CORSMiddleware
+import re
+from .models import Lead   # dein ORM Model
+from .schemas import LeadRead
 
 app = FastAPI(title="CRM Recruiting Challenge - Backend")
 
@@ -15,6 +19,16 @@ engine = create_engine(sqlite_url, echo=True)
 
 SQLModel.metadata.create_all(engine)
 
+def is_localhost_origin(origin: str) -> bool:
+    return bool(re.match(r"http://localhost:\d+", origin))
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[f"http://localhost:{port}" for port in range(60000, 70000)],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 def get_session():
     with Session(engine) as session:
         yield session
@@ -32,10 +46,9 @@ def api_create_lead(payload: LeadCreate, tenant_id: str = Depends(get_tenant_id)
     lead = create_lead(session, tenant_id, payload)
     return lead
 
-@app.get("/api/v1/leads", response_model=List[LeadRead])
+@app.get("/api/v1/leads", response_model=List[LeadRead], response_model_exclude_none=True)
 def get_leads(session: Session = Depends(get_session)):
-    statement = select(Lead)
-    leads = session.exec(statement).all()
+    leads = session.exec(select(Lead)).all()
     return leads
 
 @app.post("/api/v1/leads/{lead_id}/convert", response_model=LeadRead)

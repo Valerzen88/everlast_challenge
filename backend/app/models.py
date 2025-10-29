@@ -14,12 +14,12 @@ class Lead(SQLModel, table=True):
     created_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         
 class LeadRead(SQLModel):
     id: int
     name: str
-    email: str
+    email: Optional[str] = None
     created_at: str  # oder datetime, siehe unten
 
     model_config = {
