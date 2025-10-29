@@ -20,7 +20,7 @@ docker compose up --build
 
 +++
 
-##Special things to know
+## Special things to know
 For local backend run:
 - brew has a problem with MacOS 26
 - don't forget to create env
@@ -29,7 +29,7 @@ For local backend run:
 	- pip install "fastapi" "uvicorn" "sqlmodel" "python-jose[cryptography]" or run pip install -r requirements.txt
 	- install in venv, not in local env!
 - ./start.sh
-- python -m uvicorn backend.app.main:app --reload
+- python -m uvicorn backend.app.main:app --reload in everlast_challenge dir
 
 For local frontend run:
 - flutter config --enable-web
