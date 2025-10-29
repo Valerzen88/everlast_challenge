@@ -7,7 +7,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // Configure base URL & tenant id here for demo
-  final api = ApiClient(baseUrl: 'http://10.0.2.2:8000', tenantId: 'demo_tenant');
+  final api = ApiClient(baseUrl: 'http://localhost:8000', tenantId: 'demo_tenant');
 
   @override
   Widget build(BuildContext context) {

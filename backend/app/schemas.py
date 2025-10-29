@@ -12,12 +12,12 @@ class LeadRead(BaseModel):
     tenant_id: str
     external_id: str
     name: str
-    email: str
+    email: Optional[str] = None
     status: str
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 LeadAdapter = TypeAdapter(LeadRead)
 LeadAdapter.rebuild()
