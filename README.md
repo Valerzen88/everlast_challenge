@@ -10,12 +10,13 @@ Stack: **Backend** Python/FastAPI + **Frontend** Flutter (mobile/desktop). Persi
 - `/backend` — FastAPI backend (SQLite by default)
 - `/frontend` — Flutter demo app
 - `docker-compose.yml` — startet nur das Backend (db = SQLite file)
-- `.env.example` — Environment templat
+- `.env.example` — Environment template
 
 +++
 
 ## How to build and start docker image
 docker compose up --build
+
 ## Backend: http://localhost:8000
 
 +++
