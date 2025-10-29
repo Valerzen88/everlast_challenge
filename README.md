@@ -38,7 +38,7 @@ For local frontend run:
 - flutter devices (to see which devices are possible)
 
 ## Use Case - Ein Mini-CRM für unterwegs, bei dem jeder Vertriebler nur seine eigenen Leads sieht
-*Zielnutzer (Persona)
+* Zielnutzer (Persona)
 Name: Anna Schmidt
 Rolle: Account Managerin / Sales Representative
 Kontext: Sie arbeitet in einem mittelständischen B2B-Unternehmen und nutzt das CRM täglich, um Leads zu pflegen, Kunden nachzufassen und Deals zu verwalten.
