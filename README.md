@@ -51,5 +51,17 @@ Unklare Trennung zwischen Teams / Mandanten -> Sie betreut nur „ihre“ Kunden
 Fehlender Überblick über den eigenen Sales Funnel -> Ohne klare Struktur und Filter (z. B. nach Mandant oder Account) sieht sie nicht, welche Leads aktiv sind.
 Kein mobiler Zugriff / keine einfache UI -> Das CRM ist oft zu schwerfällig für schnelles Arbeiten am Handy oder Laptop unterwegs.
 
+## Next steps
+1. Auth + Multi-tenant enforcement (JWT + middleware verifying tenant_id against
+token).
+2. Minimal API + UI flow: Lead list, Create Lead form, Convert to Opportunity. (Flutter +
+FastAPI endpoints).
+3. Persistence: Postgres schema + basic migration (alembic) or SQLite for demo. DB
+model includes tenant_id and indices.
+4. Observability quick wins: structured logs + basic Prometheus metrics endpoint
+(/metrics).
+5. Docker Compose to run API + DB + frontend locally.
+6. README: architecture sketch, setup/run, trade-offs, next steps.
+
 * Lösung
 Ein leichtgewichtiges, mandantenfähiges Lead-Management-Modul mit JWT-basierter Authentifizierung, das Vertrieblern ermöglicht, ihre eigenen Leads schnell anzulegen, zu sehen und zu verwalten, ohne dass andere Teams dieselben Daten sehen.
